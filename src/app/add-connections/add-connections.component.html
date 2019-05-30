@@ -1,3 +1,21 @@
-<p>
-  add-connections works!
-</p>
+<div style="display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column">
+  <mat-card style="min-width:600px; width:50%; ">
+    <form style="width:100%; height:50px;">
+      <mat-form-field style="width:inherit" floatLabel="never">
+        <mat-icon matPrefix>search</mat-icon>
+        <input style="width:inherit" type="search" matInput placeholder="Search entity">
+        <mat-icon matSuffix>filter_list</mat-icon>
+      </mat-form-field>
+    </form>
+    <mat-selection-list #shoes style="width:100%;">
+      <mat-list-option *ngFor="let shoe of typesOfShoes">
+        <div>Connection name</div>
+        <div>{{shoe}}</div>
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-card>
+
+</div>

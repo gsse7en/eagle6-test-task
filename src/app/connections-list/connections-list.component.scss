@@ -5,13 +5,25 @@
 }
 
 .panel {
-    min-width:500px; 
-    width: 40%;
+    min-width:300px; 
+    width: 30%;
 }
 
 .panel-header {
     display: flex;
     align-items: center;
+}
+
+.panel-row {
+    display: block;
+    padding-left: 34px;
+    margin: 0 auto;
+    height: 50px;
+}
+
+.connection-name {
+    font-size: 15px; 
+    color:black;
 }
 
 .add-button {
