@@ -10,8 +10,8 @@ flex-direction: column">
         <mat-icon matSuffix>filter_list</mat-icon>
       </mat-form-field>
     </form>
-    <mat-selection-list #shoes style="width:100%;">
-      <mat-list-option *ngFor="let connection of filteredConnections$ | async">
+    <mat-selection-list #connectionsList style="width:100%;">
+      <mat-list-option *ngFor="let connection of filteredConnections$ | async" (click)="selectConnection(connectionsList)" [value]="connection.id" [selected]="connection.isActive">
         <div>{{connection.name}}</div>
         <div style="color:rgb(115, 115, 115);">{{connection.type}}</div>
       </mat-list-option>

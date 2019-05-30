@@ -5,13 +5,11 @@
         <mat-icon class="add-button">add_circle</mat-icon> <span>Connect entity</span>
       </div>
     </mat-expansion-panel-header>
-    <mat-panel-description class="panel-row">
-        <div class="connection-name">Some connections</div>
-        <div>with description</div>
-    </mat-panel-description>
-    <mat-panel-description class="panel-row">
-        <div class="connection-name">Some otrher connections</div>
-        <div>with description</div>
-    </mat-panel-description>
+    <ng-container *ngFor="let connection of activeConnections$ | async">
+      <mat-panel-description *ngIf="connection.isActive" class="panel-row">
+        <div class="connection-name">{{connection.name}}</div>
+        <div>{{connection.type}}</div>
+      </mat-panel-description>
+    </ng-container>
   </mat-expansion-panel>
 </section>

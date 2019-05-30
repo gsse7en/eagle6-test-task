@@ -1,9 +1,9 @@
 {
     "connections": [
-        { "id": 1, "name": "Arrivals", "type": "BPM" },
-        { "id": 1, "name": "Car wash", "type": "BPM" },
-        { "id": 1, "name": "Maintanance", "type": "project" },
-        { "id": 1, "name": "Customer payment", "type": "BPM" },
-        { "id": 1, "name": "Technical issues", "type": "project" }
+        { "id": 1, "name": "Arrivals", "type": "BPM", "isActive": "false" },
+        { "id": 2, "name": "Car wash", "type": "BPM", "isActive": "false" },
+        { "id": 3, "name": "Maintanance", "type": "project", "isActive": "false" },
+        { "id": 4, "name": "Customer payment", "type": "BPM", "isActive": "false" },
+        { "id": 5, "name": "Technical issues", "type": "project", "isActive": "false" }
     ]
   }
