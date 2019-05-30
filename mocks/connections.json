@@ -1,0 +1,9 @@
+{
+    "connections": [
+        { "id": 1, "name": "Arrivals", "type": "BPM" },
+        { "id": 1, "name": "Car wash", "type": "BPM" },
+        { "id": 1, "name": "Maintanance", "type": "project" },
+        { "id": 1, "name": "Customer payment", "type": "BPM" },
+        { "id": 1, "name": "Technical issues", "type": "project" }
+    ]
+  }
