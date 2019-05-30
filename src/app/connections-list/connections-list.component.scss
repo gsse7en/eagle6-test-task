@@ -1,0 +1,20 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.panel {
+    min-width:500px; 
+    width: 40%;
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+}
+
+.add-button {
+    color:grey; 
+    padding-right: 10px;
+}
