@@ -1,23 +1,20 @@
-<div style="display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column">
-  <mat-card style="min-width:600px; width:50%; ">
-    <form style="width:100%; height:50px;">
-      <mat-form-field style="width:inherit" floatLabel="never">
+<div class="wrapper">
+  <mat-card class="panel">
+    <form class="filter-form">
+      <mat-form-field class="filter-form-field" floatLabel="never">
         <mat-icon matPrefix>search</mat-icon>
-        <input style="width:inherit" [formControl]="filter" type="text" matInput placeholder="Search entity">
+        <input [formControl]="filter" type="text" matInput placeholder="Search entity">
         <mat-icon matSuffix>filter_list</mat-icon>
       </mat-form-field>
     </form>
-    <mat-selection-list #connectionsList style="width:100%;">
+    <mat-selection-list class="filtered-connections-list" #connectionsList>
       <mat-list-option *ngFor="let connection of filteredConnections$ | async" (click)="selectConnection(connectionsList)" [value]="connection.id" [selected]="connection.isActive">
         <div>{{connection.name}}</div>
-        <div style="color:rgb(115, 115, 115);">{{connection.type}}</div>
+        <div class="connection-type">{{connection.type}}</div>
       </mat-list-option>
     </mat-selection-list>
   </mat-card>
   <a routerLink="/">
-    <button mat-raised-button color="primary" style="margin-top:20px;">Connect</button>
+    <button mat-raised-button color="primary" class="connect-button">Connect</button>
   </a>
 </div>
