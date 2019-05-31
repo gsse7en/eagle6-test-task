@@ -5,3 +5,27 @@
 .mat-form-field-infix {
     border-top: none !important;
 }
+
+.mat-pseudo-checkbox-checked {
+    background: rgb(49, 66, 153);
+}
+
+.mat-list-base {
+    padding-top: 0 !important;
+}
+
+.mat-card {
+    padding: 0 !important;
+}
+
+.mat-input-underline {
+    display: none !important;
+}
+
+.mat-form-field-ripple {
+    display: none !important;
+}
+
+.mat-form-field-flex {
+    padding: 10px;
+}
