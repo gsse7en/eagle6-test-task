@@ -8,15 +8,19 @@ import { Observable } from 'rxjs';
   styleUrls: ['./connections-list.component.scss']
 })
 export class ConnectionsListComponent implements OnInit {
-  activeConnections$: Observable<any[]>;
+  activeConnections: any[];
 
   constructor(
     private connectionService: ConnectionsService
   ) {
-    this.activeConnections$ = connectionService.getConnections();
+    connectionService.getConnections().subscribe((connections => this.activeConnections = connections));
   }
 
   ngOnInit() {
+  }
+
+  private connectionsLength() {
+    return this.activeConnections.filter(connection => connection.isActive === true).length;
   }
 
 }

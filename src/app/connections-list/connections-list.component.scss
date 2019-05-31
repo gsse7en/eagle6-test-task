@@ -15,7 +15,8 @@
 }
 
 .panel-row {
-    display: block;
+    display: flex;
+    justify-content: space-between;
     padding-left: 34px;
     margin: 0 auto;
     height: 50px;
@@ -29,4 +30,8 @@
 .add-button {
     color:grey; 
     padding-right: 10px;
+}
+
+.remove-button {
+    cursor: pointer;
 }
