@@ -1,27 +1,21 @@
-# Eagle6TestTask
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.2.
+## Instal NPM dependencies 
 
-## Development server
+Run `npm i`.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Install mock-server
 
-## Code scaffolding
+Run `npm install -g json-server` to install json-server available globally. 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Start server
 
-## Build
+Run `npm run mock:server` to run the server at `http://localhost:3000/`. 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Start App
+
+Finally run `ng s` to run the app at `http://localhost:4200/`. 
+
 
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
