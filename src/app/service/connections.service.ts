@@ -8,7 +8,7 @@ import { Connection } from '../model/connection.model';
   providedIn: 'root'
 })
 export class ConnectionsService {
-  private connections$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  private connections$: BehaviorSubject<Connection[]> = new BehaviorSubject<Connection[]>([]);
 
   constructor(private http: HttpClient) {
     this.http.get<Connection[]>(environment.apiUrl).subscribe(connections => this.setConnection(connections));

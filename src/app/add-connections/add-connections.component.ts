@@ -12,11 +12,11 @@ import { Connection } from '../model/connection.model';
   styleUrls: ['./add-connections.component.scss']
 })
 export class AddConnectionsComponent implements OnDestroy {
-  connections$: Observable<Connection[]>;
-  connections: Connection[];
-  filter: FormControl;
-  filter$: Observable<string>;
-  filteredConnections$: Observable<Connection[]>;
+  private connections$: Observable<Connection[]>;
+  private connections: Connection[];
+  private filter: FormControl;
+  private filter$: Observable<string>;
+  private filteredConnections$: Observable<Connection[]>;
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
   constructor(
@@ -33,20 +33,24 @@ export class AddConnectionsComponent implements OnDestroy {
     this.filteredConnections$ = combineLatest(this.connections$, this.filter$).pipe(
       map(([states, filterString]) => {
         this.connections = states;
-        return states.filter(state => state.name
-          && (state.name.indexOf(filterString) !== -1
-          || state.type.indexOf(filterString) !== -1)
+        filterString = filterString.trim().toLowerCase();
+        return states.filter(state => (this.filterHelperFn(state.name, filterString)
+          || this.filterHelperFn(state.type, filterString))
         );
       }), takeUntil(this.destroyed$)
     );
   }
 
-  public selectConnection(ids: any): void {
+  private selectConnection(ids: any): void {
     const activeConnectionsIds = ids.selectedOptions.selected.map(item => item.value);
     const activeConnections = this.connections.map(connection => {
       return {...connection, isActive: activeConnectionsIds.indexOf(connection.id) !== -1};
     });
     this.connectionService.setConnection(activeConnections);
+  }
+
+  private filterHelperFn(searchedText: string, query: string): boolean {
+    return searchedText.toLowerCase().indexOf(query) !== -1;
   }
 
   ngOnDestroy() {

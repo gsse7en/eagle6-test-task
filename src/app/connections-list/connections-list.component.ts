@@ -10,16 +10,16 @@ import { Connection } from '../model/connection.model';
   styleUrls: ['./connections-list.component.scss']
 })
 export class ConnectionsListComponent implements OnDestroy {
-  activeConnections: any[];
+  private activeConnections: Connection[];
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
-  private activeConnections$: Observable<Connection[]> = new ReplaySubject(1);
+  private activeConnections$: Observable<Connection[]>;
 
   constructor(private connectionService: ConnectionsService) {
     this.activeConnections$ = connectionService.getConnections().pipe(takeUntil(this.destroyed$));
     this.activeConnections$.subscribe((connections => this.activeConnections = connections));
   }
 
-  private connectionsLength() {
+  private connectionsLength(): number {
     return this.activeConnections.filter(connection => connection.isActive === true).length;
   }
 
