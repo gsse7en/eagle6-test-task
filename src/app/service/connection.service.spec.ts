@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
-import { ConnectionsService } from './connections.service';
+import { ConnectionService } from './connection.service';
 
 describe('ConnectionsService', () => {
   beforeEach(() => TestBed.configureTestingModule({
@@ -8,7 +8,7 @@ describe('ConnectionsService', () => {
   }));
 
   it('should be created', () => {
-    const service: ConnectionsService = TestBed.get(ConnectionsService);
+    const service: ConnectionService = TestBed.get(ConnectionService);
     expect(service).toBeTruthy();
   });
 });

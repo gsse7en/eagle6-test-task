@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
-import { ConnectionsService } from '../service/connections.service';
+import { ConnectionService } from '../service/connection.service';
 import { Observable, ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Connection } from '../model/connection.model';
+import { IConnection } from '../interface/connection.interface';
 
 @Component({
   selector: 'app-connections-list',
@@ -10,13 +10,16 @@ import { Connection } from '../model/connection.model';
   styleUrls: ['./connections-list.component.scss']
 })
 export class ConnectionsListComponent implements OnDestroy {
-  private activeConnections: Connection[];
+  private activeConnections: IConnection[];
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
-  private activeConnections$: Observable<Connection[]>;
+  private activeConnections$: Observable<IConnection[]>;
 
-  constructor(private connectionService: ConnectionsService) {
-    this.activeConnections$ = connectionService.getConnections().pipe(takeUntil(this.destroyed$));
-    this.activeConnections$.subscribe((connections => this.activeConnections = connections));
+  constructor(private connectionService: ConnectionService) {
+    this.activeConnections$ = this.connectionService.connections
+      .pipe(takeUntil(this.destroyed$));
+    this.activeConnections$.subscribe((connections => {
+      this.activeConnections = connections;
+    }));
   }
 
   private connectionsLength(): number {

@@ -9,7 +9,10 @@
     </form>
     <mat-selection-list class="filtered-connections-list" #connectionsList>
       <mat-list-option *ngFor="let connection of filteredConnections$ | async"
-        (click)="selectConnection(connectionsList)" [value]="connection.id" [selected]="connection.isActive">
+          (click)="selectConnection(connectionsList)" 
+          [value]="connection.id" 
+          [selected]="connection.isActive"
+          checkboxPosition="before">
         <div>{{connection.name}}</div>
         <div class="connection-type">{{connection.type}}</div>
       </mat-list-option>

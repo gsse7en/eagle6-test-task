@@ -2,9 +2,10 @@ import { Component, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, combineLatest, ReplaySubject } from 'rxjs';
 import { map, startWith, takeUntil, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { MatSelectionList } from '@angular/material/list';
 
-import { ConnectionsService } from '../service/connections.service';
-import { Connection } from '../model/connection.model';
+import { ConnectionService } from '../service/connection.service';
+import { IConnection } from '../interface/connection.interface';
 
 @Component({
   selector: 'app-add-connections',
@@ -12,17 +13,17 @@ import { Connection } from '../model/connection.model';
   styleUrls: ['./add-connections.component.scss']
 })
 export class AddConnectionsComponent implements OnDestroy {
-  private connections$: Observable<Connection[]>;
-  private connections: Connection[];
+  private connections$: Observable<IConnection[]>;
+  private connections: IConnection[];
   private filter: FormControl;
   private filter$: Observable<string>;
-  private filteredConnections$: Observable<Connection[]>;
+  private filteredConnections$: Observable<IConnection[]>;
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
   constructor(
-    private connectionService: ConnectionsService
+    private connectionService: ConnectionService
   ) {
-    this.connections$ = connectionService.getConnections();
+    this.connections$ = this.connectionService.connections;
     this.filter = new FormControl('');
     this.filter$ = this.filter.valueChanges.pipe(
       startWith(''),
@@ -34,19 +35,20 @@ export class AddConnectionsComponent implements OnDestroy {
       map(([states, filterString]) => {
         this.connections = states;
         filterString = filterString.trim().toLowerCase();
-        return states.filter(state => (this.filterHelperFn(state.name, filterString)
+        return states.filter(state => (
+          this.filterHelperFn(state.name, filterString)
           || this.filterHelperFn(state.type, filterString))
         );
       }), takeUntil(this.destroyed$)
     );
   }
 
-  private selectConnection(ids: any): void {
+  private selectConnection(ids: MatSelectionList): void {
     const activeConnectionsIds = ids.selectedOptions.selected.map(item => item.value);
     const activeConnections = this.connections.map(connection => {
-      return {...connection, isActive: activeConnectionsIds.indexOf(connection.id) !== -1};
+      return { ...connection, isActive: activeConnectionsIds.indexOf(connection.id) !== -1 };
     });
-    this.connectionService.setConnection(activeConnections);
+    this.connectionService.setConnections(activeConnections);
   }
 
   private filterHelperFn(searchedText: string, query: string): boolean {

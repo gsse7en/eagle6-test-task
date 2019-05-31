@@ -10,7 +10,7 @@
       </div>
     </mat-expansion-panel-header>
     <ng-container *ngFor="let connection of activeConnections">
-      <mat-panel-description *ngIf="connection.isActive === true" class="panel-row">
+      <mat-panel-description *ngIf="connection.isActive" class="panel-row">
         <div>
           <div class="connection-name">{{connection.name}}</div>
           <div>{{connection.type}}</div>
