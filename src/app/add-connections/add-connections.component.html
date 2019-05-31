@@ -8,12 +8,14 @@
       </mat-form-field>
     </form>
     <mat-selection-list class="filtered-connections-list" #connectionsList>
-      <mat-list-option *ngFor="let connection of filteredConnections$ | async" (click)="selectConnection(connectionsList)" [value]="connection.id" [selected]="connection.isActive">
+      <mat-list-option *ngFor="let connection of filteredConnections$ | async"
+        (click)="selectConnection(connectionsList)" [value]="connection.id" [selected]="connection.isActive">
         <div>{{connection.name}}</div>
         <div class="connection-type">{{connection.type}}</div>
       </mat-list-option>
     </mat-selection-list>
   </mat-card>
+
   <a routerLink="/">
     <button mat-raised-button color="primary" class="connect-button">Connect</button>
   </a>

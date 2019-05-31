@@ -1,4 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatExpansionModule, MatIconModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ConnectionsListComponent } from './connections-list.component';
 
@@ -8,9 +11,10 @@ describe('ConnectionsListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConnectionsListComponent ]
+      imports: [HttpClientModule, MatExpansionModule, MatIconModule, NoopAnimationsModule],
+      declarations: [ConnectionsListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

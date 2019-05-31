@@ -1,4 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatCardModule, MatIconModule, MatInputModule, MatFormFieldModule, MatListModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AddConnectionsComponent } from './add-connections.component';
 
@@ -8,6 +12,17 @@ describe('AddConnectionsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        NoopAnimationsModule,
+        HttpClientModule,
+        MatCardModule,
+        MatIconModule,
+        MatInputModule,
+        MatListModule,
+        FormsModule,
+        MatFormFieldModule,
+        ReactiveFormsModule
+      ],
       declarations: [ AddConnectionsComponent ]
     })
     .compileComponents();
