@@ -1,37 +1,37 @@
 .wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .panel {
-    min-width:300px; 
-    width: 30%;
+  min-width: 300px;
+  width: 30%;
 }
 
 .panel-header {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .panel-row {
-    display: flex;
-    justify-content: space-between;
-    padding-left: 34px;
-    margin: 0 auto;
-    height: 50px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 34px;
+  margin: 0 auto;
+  height: 50px;
 }
 
 .connection-name {
-    font-size: 15px; 
-    color:black;
+  font-size: 15px;
+  color: black;
 }
 
 .add-button {
-    color:grey; 
-    padding-right: 10px;
+  color: grey;
+  padding-right: 10px;
 }
 
 .remove-button {
-    cursor: pointer;
+  cursor: pointer;
 }
