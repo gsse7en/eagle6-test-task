@@ -5,7 +5,7 @@ Run `npm i`.
 
 ## Install mock-server
 
-Run `npm install -g json-server` to install json-server available globally. 
+Run `npm install -g json-server` to make json-server available globally. 
 
 ## Start server
 
