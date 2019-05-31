@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, ElementRef, OnDestroy, ViewChild, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, combineLatest, ReplaySubject } from 'rxjs';
 import { map, startWith, takeUntil, debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -12,13 +12,14 @@ import { IConnection } from '../interface/connection.interface';
   templateUrl: './add-connections.component.html',
   styleUrls: ['./add-connections.component.scss']
 })
-export class AddConnectionsComponent implements OnDestroy {
+export class AddConnectionsComponent implements OnDestroy, OnInit {
   private connections$: Observable<IConnection[]>;
   private connections: IConnection[];
   private filter: FormControl;
   private filter$: Observable<string>;
   private filteredConnections$: Observable<IConnection[]>;
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
+  @ViewChild('filterRef') filterRef: ElementRef;
 
   constructor(
     private connectionService: ConnectionService
@@ -41,6 +42,10 @@ export class AddConnectionsComponent implements OnDestroy {
         );
       }), takeUntil(this.destroyed$)
     );
+  }
+
+  ngOnInit() {
+    this.filterRef.nativeElement.focus();
   }
 
   private selectConnection(ids: MatSelectionList): void {

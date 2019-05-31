@@ -3,7 +3,7 @@
     <form class="filter-form">
       <mat-form-field class="filter-form-field" floatLabel="never">
         <mat-icon matPrefix>search</mat-icon>
-        <input [formControl]="filter" type="text" matInput placeholder="Search entity">
+        <input #filterRef [formControl]="filter" type="text" matInput placeholder="Search entity">
         <mat-icon matSuffix>filter_list</mat-icon>
       </mat-form-field>
     </form>
